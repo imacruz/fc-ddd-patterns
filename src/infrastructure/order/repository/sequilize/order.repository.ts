@@ -40,7 +40,6 @@ export default class OrderRepository implements OrderRepositoryInterface {
         })),
       },
       {
-        include: [{ model: OrderItemModel }],
         where: {
           id: entity.id,
         },
