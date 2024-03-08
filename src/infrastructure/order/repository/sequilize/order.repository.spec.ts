@@ -204,12 +204,15 @@ describe("Order repository test", () => {
     const orderRepository = new OrderRepository();
     const order = new Order("123", "123", [orderItem]);
     await orderRepository.create(order);
+    const findOrder = await orderRepository.find("123");
+
     const orderB = new Order("1234", "1233", [orderItemB]);
     await orderRepository.create(orderB);
+    const findOrderB = await orderRepository.find("1234");
       
     const orders = await orderRepository.findAll();
     expect(orders).toHaveLength(2);
-    expect(orders).toContainEqual(order);
-    expect(orders).toContainEqual(orderB);
+    expect(orders).toContainEqual(findOrder);
+    expect(orders).toContainEqual(findOrderB);
   });
 });
